@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "american eagle 1oz",
+    "price": 1895.5,
+    "imgUrl": "/imgs/gold-coin-american-eagle-1oz.png"
+  },
+  {
+    "id": "2",
+    "name": "buffalo 1oz",
+    "price": 1945.5,
+    "imgUrl": "/imgs/gold-coin-buffalo-1oz.png"
+  },
+  {
+    "id": "3",
+    "name": "britannia 1oz",
+    "price": 31.25,
+    "imgUrl": "/imgs/silver-coin-britannia-1oz.png"
+  },
+  {
+    "id": "4",
+    "name": "philharmonic 1oz",
+    "price": 29.85,
+    "imgUrl": "/imgs/silver-coin-philharmonic-1oz.png"
+  }
+]
