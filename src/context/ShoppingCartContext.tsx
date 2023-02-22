@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import { ShoppingCart } from "../components/ShoppingCart";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import storeItems from "../data/items.json";
 
 type CartItemType = {
   id: string;
@@ -16,6 +17,7 @@ export type ShoppingCartContextType = {
   removeFromCart: (id: string) => void;
   cartItemQuantity: number;
   cartItems: CartItemType[];
+  cartTotal: number;
 };
 
 type ShoppingCartProviderProps = {
@@ -80,17 +82,22 @@ export const ShoppingCartProvider = ({
     });
   };
 
-  const cartItemQuantity = cartItems.reduce(
-    (acc, currItem) => acc + currItem.quantity,
-    0
-  );
-
   const openCart = () => {
     setIsOpen(true);
   };
   const closeCart = () => {
     setIsOpen(false);
   };
+
+  const cartItemQuantity = cartItems.reduce(
+    (acc, currItem) => acc + currItem.quantity,
+    0
+  );
+
+  const cartTotal = cartItems.reduce((total, cartItem) => {
+    const item = storeItems.find((item) => item.id === cartItem.id);
+    return total + (item?.price || 0) * cartItem.quantity;
+  }, 0);
 
   return (
     <ShoppingCartContext.Provider
@@ -103,6 +110,7 @@ export const ShoppingCartProvider = ({
         openCart,
         closeCart,
         cartItemQuantity,
+        cartTotal,
       }}
     >
       {children}
